@@ -1,11 +1,11 @@
 ![ghosttedbanner](ghosttedxv.png)
 
-UwU
+𝘎𝘩𝘰𝘴𝘵𝘵𝘦𝘥𝘟𝘝 - 𝘉𝘭𝘶𝘦 𝘈𝘳𝘤𝘩𝘪𝘷𝘦 𝘚𝘦𝘯𝘴𝘦𝘪 𝘧𝘳𝘰𝘮 𝘐𝘋🇲🇨
 
 ---
 
 # 💫 About Me:
-A fan of the Blue Archive game series and an indie Python & Website developer who loves life 
+A passionate fan of the Blue Archive game series, indie Python and website developer, and someone who loves embracing life’s possibilities. 
 
 
 ## 🌐 Socials:
