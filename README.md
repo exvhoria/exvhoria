@@ -1,3 +1,5 @@
+![ghosttedbanner](ghosttedxv.png)
+
 # 💫 About Me:
 A fan of the Blue Archive game series and an indie Python & Website developer who loves life 
 
