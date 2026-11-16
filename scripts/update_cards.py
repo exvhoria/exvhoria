@@ -138,19 +138,34 @@ def build_featured_svg() -> str:
 
 
 def build_footer_svg() -> str:
-    synced = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 56" width="760" height="56" role="img" aria-label="Profile Footer Status">
+    profile_commit = api_get(f"repos/{OWNER}/{OWNER}/commits/main")
+    p_sha = profile_commit.get("sha", "")[:7]
+    now_utc = datetime.now(timezone.utc)
+    synced_pretty = now_utc.strftime("%b %d, %Y · %H:%M UTC")
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 106" width="760" height="106" role="img" aria-label="Profile Sync &amp; Last Update">
   <defs>
-    <linearGradient id="ft_bg" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="ft_bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#09090b"/>
       <stop offset="100%" stop-color="#111114"/>
     </linearGradient>
+    <pattern id="ft_dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#27272a" opacity="0.35"/>
+    </pattern>
   </defs>
 
-  <rect x="1" y="1" width="758" height="54" rx="14" fill="url(#ft_bg)" stroke="#27272a" stroke-width="1"/>
-  <circle cx="28" cy="28" r="3" fill="#22c55e"/>
-  <text x="41" y="32" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" letter-spacing="1.8" fill="#71717a">EXVHORIA // ZYRUMHD</text>
-  <text x="734" y="32" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#a1a1aa">LAST UPDATE · {html.escape(synced)}</text>
+  <rect x="1" y="1" width="758" height="104" rx="14" fill="url(#ft_bg)" stroke="#27272a" stroke-width="1"/>
+  <rect x="1" y="1" width="758" height="104" rx="14" fill="url(#ft_dots)"/>
+
+  <!-- Left Card: Last Update -->
+  <rect x="20" y="18" width="352" height="70" rx="10" fill="#111114" stroke="#27272a" stroke-width="1"/>
+  <text x="38" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#71717a">LAST UPDATE</text>
+  <text x="38" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#fafafa">{html.escape(synced_pretty)}</text>
+
+  <!-- Right Card: Live Sync Status -->
+  <rect x="388" y="18" width="352" height="70" rx="10" fill="#111114" stroke="#27272a" stroke-width="1"/>
+  <text x="406" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#71717a">EXVHORIA // ZYRUMHD</text>
+  <circle cx="411" cy="63" r="4" fill="#22c55e"/>
+  <text x="424" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="600" fill="#fafafa">commit {html.escape(p_sha)} · auto-synced</text>
 </svg>
 '''
 

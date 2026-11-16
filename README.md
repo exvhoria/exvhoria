@@ -3,9 +3,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/exvhoria"><img src="./social-github.svg" alt="GitHub" width="98" height="32" /></a>
-  <a href="https://youtube.com/@ghosttedwastaken"><img src="./social-youtube.svg" alt="YouTube" width="104" height="32" /></a>
-  <a href="https://instagram.com/ghosttedcodm"><img src="./social-instagram.svg" alt="Instagram" width="112" height="32" /></a>
+  <a href="https://github.com/exvhoria"><img src="./social-github.svg" alt="GitHub" width="108" height="34" /></a>
+  <a href="https://youtube.com/@ghosttedwastaken"><img src="./social-youtube.svg" alt="YouTube" width="108" height="34" /></a>
+  <a href="https://instagram.com/ghosttedcodm"><img src="./social-instagram.svg" alt="Instagram" width="108" height="34" /></a>
 </p>
 
 ### About
@@ -55,6 +55,6 @@ Live repository telemetry synced automatically via GitHub Actions:
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/last-commit/exvhoria/exvhoria?style=flat-square&label=LAST%20UPDATE&color=18181b&labelColor=09090b" alt="Last Update" />
-  <img src="https://hits.sh/github.com/exvhoria.svg?style=flat-square&label=VIEWS&color=18181b&labelColor=09090b" alt="Profile Views" />
+  <img src="https://img.shields.io/github/last-commit/exvhoria/exvhoria?style=for-the-badge&label=LAST%20UPDATE&color=27272a&labelColor=111114" alt="Last Update" />
+  <img src="https://hits.sh/github.com/exvhoria.svg?view=today-total&style=for-the-badge&label=VIEWS&color=27272a&labelColor=111114" alt="Profile Views" />
 </p>

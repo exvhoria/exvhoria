@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 32" width="112" height="32" role="img" aria-label="Instagram: @ghosttedcodm">
-  <rect x="0.5" y="0.5" width="111" height="31" rx="8" fill="#111114" stroke="#27272a" stroke-width="1"/>
-  <g transform="translate(13, 9)" fill="none" stroke="#e4e4e7" stroke-width="1.35">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 34" width="108" height="34" role="img" aria-label="Instagram: @ghosttedcodm">
+  <rect x="0.5" y="0.5" width="107" height="33" rx="8" fill="#111114" stroke="#27272a" stroke-width="1"/>
+  <g transform="translate(14.5, 10)" fill="none" stroke="#e4e4e7" stroke-width="1.35">
     <rect x="0.7" y="0.7" width="12.6" height="12.6" rx="3.4"/>
     <circle cx="7" cy="7" r="3"/>
     <circle cx="10.7" cy="3.3" r="0.7" fill="#e4e4e7" stroke="none"/>
   </g>
-  <text x="34" y="20.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#e4e4e7">Instagram</text>
+  <text x="35.5" y="21.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#e4e4e7">Instagram</text>
 </svg>
