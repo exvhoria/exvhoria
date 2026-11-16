@@ -11,7 +11,7 @@
 
 ### About
 
-Independent software engineer based in Indonesia, building backend infrastructure, self-hosted AI tooling, and full-stack web systems under **MoonVatality**. I focus on resilient CLI workflows, reverse-proxy gateways, and pragmatic architectures designed to run reliably in constrained environments.
+Independent software engineer based in Indonesia, currently focused on **ZyruMHD**, building backend infrastructure, self-hosted AI tooling, and full-stack web systems. I focus on resilient CLI workflows, reverse-proxy gateways, and pragmatic architectures designed to run reliably in constrained environments.
 
 <p align="left">
   <img src="./focus.svg" alt="Engineering Focus" width="100%" />
@@ -23,6 +23,12 @@ Core languages, runtimes, and infrastructure I build with daily:
 
 <p align="left">
   <img src="./techstack.svg" alt="Tech Stack" width="100%" />
+</p>
+
+### Current Initiative
+
+<p align="left">
+  <img src="./requiem.svg" alt="ZyruMHD: Requiem" width="100%" />
 </p>
 
 ### Featured Project
