@@ -22,15 +22,25 @@ Independent software engineer based in Indonesia, building backend infrastructur
 Core languages, runtimes, and infrastructure I build with daily:
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=ts,js,py,lua,nextjs,nodejs,flask,tailwind,electron,cloudflare,docker,vercel,mongodb,sqlite&theme=dark&perline=7" alt="Tech Stack" />
+  <img src="./techstack.svg" alt="Tech Stack" width="100%" />
 </p>
 
-### Live Telemetry & Featured Work
+### Featured Project
 
-Real-time repository telemetry, contribution streaks, and 30-day activity synced automatically via GitHub Actions:
+Live repository telemetry synced automatically via GitHub Actions:
 
 <p align="left">
   <a href="https://github.com/exvhoria/Asanagi-Code">
-    <img src="./dashboard.svg" alt="Live Featured Project &amp; GitHub Telemetry" width="100%" />
+    <img src="./featured.svg" alt="Featured Project — exvhoria/Asanagi-Code" width="100%" />
   </a>
+</p>
+
+### Real-Time Activity
+
+<p align="left">
+  <img src="https://streak-stats.demolab.com/?user=exvhoria&background=09090b&border=27272a&stroke=27272a&ring=e4e4e7&fire=fafafa&currStreakNum=fafafa&sideNums=fafafa&currStreakLabel=a1a1aa&sideLabels=a1a1aa&dates=71717a&border_radius=14" alt="GitHub Streak" />
+</p>
+
+<p align="left">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=exvhoria&bg_color=09090b&color=a1a1aa&line=e4e4e7&point=fafafa&area=true&area_color=27272a&hide_border=false&border_color=27272a&radius=14&custom_title=Contribution%20Activity" alt="Contribution Activity Graph" width="100%" />
 </p>
