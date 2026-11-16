@@ -30,8 +30,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet featured.svg; then
-            git add featured.svg
-            git commit -m "chore: sync live featured project telemetry"
+          if ! git diff --quiet banner.svg dashboard.svg; then
+            git add banner.svg dashboard.svg
+            git commit -m "chore: sync live profile telemetry"
             git push
           fi
