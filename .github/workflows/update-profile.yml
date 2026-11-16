@@ -7,15 +7,13 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "scripts/update_cards.py"
-      - ".github/workflows/update-profile.yml"
 
 permissions:
   contents: write
 
 jobs:
   update:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,8 +28,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet featured.svg; then
-            git add featured.svg
-            git commit -m "chore: sync live featured project telemetry"
+          if ! git diff --quiet featured.svg footer.svg; then
+            git add featured.svg footer.svg
+            git commit -m "chore: sync live profile telemetry [skip ci]"
             git push
           fi

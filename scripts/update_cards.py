@@ -137,10 +137,29 @@ def build_featured_svg() -> str:
 '''
 
 
+def build_footer_svg() -> str:
+    synced = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 56" width="760" height="56" role="img" aria-label="Profile Footer Status">
+  <defs>
+    <linearGradient id="ft_bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#111114"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="1" y="1" width="758" height="54" rx="14" fill="url(#ft_bg)" stroke="#27272a" stroke-width="1"/>
+  <circle cx="28" cy="28" r="3" fill="#22c55e"/>
+  <text x="41" y="32" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" letter-spacing="1.8" fill="#71717a">EXVHORIA // ZYRUMHD</text>
+  <text x="734" y="32" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#a1a1aa">LAST UPDATE · {html.escape(synced)}</text>
+</svg>
+'''
+
+
 def main() -> None:
-    svg = build_featured_svg()
     with open("featured.svg", "w", encoding="utf-8") as f:
-        f.write(svg)
+        f.write(build_featured_svg())
+    with open("footer.svg", "w", encoding="utf-8") as f:
+        f.write(build_footer_svg())
 
 
 if __name__ == "__main__":
