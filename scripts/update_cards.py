@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
-"""Generate real-time monodark featured project SVG for exvhoria's GitHub profile."""
+"""Generate real-time monodark profile SVGs for exvhoria."""
 
 import html
 import json
 import os
+import re
 import urllib.request
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 OWNER = "exvhoria"
 REPO = "Asanagi-Code"
 FALLBACK_DESC_1 = "Self-hosted AI coding agent and proxy gateway supervisor for Termux/Android"
 FALLBACK_DESC_2 = "with automatic session re-minting, WARP egress rotation, and watchdog recovery."
+WIB = timezone(timedelta(hours=7))
 
 
 def api_get(path: str) -> dict:
@@ -25,6 +27,103 @@ def api_get(path: str) -> dict:
     req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=15) as resp:
         return json.loads(resp.read().decode("utf-8"))
+
+
+def fetch_contributions_year(year: int) -> dict[str, int]:
+    url = f"https://github.com/users/{OWNER}/contributions?from={year}-01-01&to={year}-12-31"
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    page = urllib.request.urlopen(req, timeout=15).read().decode("utf-8", "ignore")
+
+    cells = {
+        cid: d
+        for d, cid in re.findall(
+            r'data-date="(\d{4}-\d{2}-\d{2})"[^>]*id="(contribution-day-component-\d+-\d+)"',
+            page,
+        )
+    }
+    if not cells:
+        cells = dict(
+            re.findall(
+                r'id="(contribution-day-component-\d+-\d+)"[^>]*data-date="(\d{4}-\d{2}-\d{2})"',
+                page,
+            )
+        )
+
+    out: dict[str, int] = {}
+    for cid, txt in re.findall(r'for="(contribution-day-component-\d+-\d+)"[^>]*>([^<]+)<', page):
+        d = cells.get(cid)
+        if not d:
+            continue
+        m = re.match(r"(\d+)\s+contribution", txt.strip())
+        out[d] = int(m.group(1)) if m else 0
+    return out
+
+
+def fmt_range(s: str, e: str) -> str:
+    ds = date.fromisoformat(s)
+    de = date.fromisoformat(e)
+    if s == e:
+        return ds.strftime("%b %d")
+    if ds.year == de.year and ds.month == de.month:
+        return f"{ds.strftime('%b %d')} – {de.strftime('%b %d')}"
+    return f"{ds.strftime('%b %d')} – {de.strftime('%b %d')}"
+
+
+def compute_contribution_stats(start_year: int = 2024) -> dict:
+    today = datetime.now(WIB).date()
+    all_days: dict[str, int] = {}
+    for y in range(start_year, today.year + 1):
+        try:
+            all_days.update(fetch_contributions_year(y))
+        except Exception:
+            pass
+
+    sorted_days = sorted((d, c) for d, c in all_days.items() if d <= today.isoformat())
+    total = sum(c for _, c in sorted_days)
+
+    longest = 0
+    longest_start = ""
+    longest_end = ""
+    cur = 0
+    cur_start = ""
+    prev_d: date | None = None
+
+    for d_str, cnt in sorted_days:
+        d_obj = date.fromisoformat(d_str)
+        if cnt > 0:
+            if prev_d and (d_obj - prev_d).days == 1 and cur > 0:
+                cur += 1
+            else:
+                cur = 1
+                cur_start = d_str
+            if cur >= longest:
+                longest = cur
+                longest_start = cur_start
+                longest_end = d_str
+        else:
+            cur = 0
+        prev_d = d_obj
+
+    day_map = dict(sorted_days)
+    check_day = today
+    if day_map.get(check_day.isoformat(), 0) == 0:
+        check_day = today - timedelta(days=1)
+
+    current = 0
+    current_end = check_day.isoformat()
+    current_start = current_end
+    while day_map.get(check_day.isoformat(), 0) > 0:
+        current += 1
+        current_start = check_day.isoformat()
+        check_day -= timedelta(days=1)
+
+    return {
+        "total": total,
+        "current": current,
+        "current_range": fmt_range(current_start, current_end) if current > 0 else "No active streak",
+        "longest": longest,
+        "longest_range": fmt_range(longest_start, longest_end) if longest > 0 else "—",
+    }
 
 
 def truncate(text: str, limit: int) -> str:
@@ -137,6 +236,51 @@ def build_featured_svg() -> str:
 '''
 
 
+def build_streak_svg() -> str:
+    stats = compute_contribution_stats()
+    synced = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 192" width="760" height="192" role="img" aria-label="GitHub Contribution Streak">
+  <defs>
+    <linearGradient id="st_bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#111114"/>
+    </linearGradient>
+    <pattern id="st_dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#27272a" opacity="0.35"/>
+    </pattern>
+  </defs>
+
+  <rect x="1" y="1" width="758" height="190" rx="14" fill="url(#st_bg)" stroke="#27272a" stroke-width="1"/>
+  <rect x="1" y="1" width="758" height="190" rx="14" fill="url(#st_dots)"/>
+
+  <text x="24" y="34" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" letter-spacing="2" fill="#71717a">CONTRIBUTION TELEMETRY</text>
+  <text x="736" y="34" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#52525b">synced {html.escape(synced)}</text>
+
+  <!-- Left: Total Contributions -->
+  <rect x="24" y="50" width="226" height="118" rx="10" fill="#111114" stroke="#27272a" stroke-width="1"/>
+  <text x="137" y="77" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" letter-spacing="1.4" fill="#71717a">TOTAL CONTRIBUTIONS</text>
+  <text x="137" y="121" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#fafafa">{stats['total']}</text>
+  <text x="137" y="149" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#a1a1aa">Mar 6, 2024 – Present</text>
+
+  <!-- Center: Current Streak -->
+  <rect x="267" y="50" width="226" height="118" rx="10" fill="#111114" stroke="#27272a" stroke-width="1"/>
+  <circle cx="380" cy="95" r="24" fill="none" stroke="#27272a" stroke-width="2.5"/>
+  <circle cx="380" cy="95" r="24" fill="none" stroke="#fafafa" stroke-width="2.5" stroke-dasharray="122 29" stroke-dashoffset="-14" stroke-linecap="round"/>
+  <circle cx="380" cy="71" r="4" fill="#111114"/>
+  <path d="M380 63 C382.5 66.5 384 68.8 384 71 A4 4 0 0 1 376 71 C376 68.8 377.5 66.5 380 63 Z" fill="#fafafa"/>
+  <text x="380" y="103" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#fafafa">{stats['current']}</text>
+  <text x="380" y="136" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" letter-spacing="1.4" fill="#d4d4d8">CURRENT STREAK</text>
+  <text x="380" y="153" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#a1a1aa">{html.escape(stats['current_range'])}</text>
+
+  <!-- Right: Longest Streak -->
+  <rect x="510" y="50" width="226" height="118" rx="10" fill="#111114" stroke="#27272a" stroke-width="1"/>
+  <text x="623" y="77" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" letter-spacing="1.4" fill="#71717a">LONGEST STREAK</text>
+  <text x="623" y="121" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#fafafa">{stats['longest']}</text>
+  <text x="623" y="149" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#a1a1aa">{html.escape(stats['longest_range'])}</text>
+</svg>
+'''
+
+
 def build_footer_svg() -> str:
     profile_commit = api_get(f"repos/{OWNER}/{OWNER}/commits/main")
     p_sha = profile_commit.get("sha", "")[:7]
@@ -173,6 +317,8 @@ def build_footer_svg() -> str:
 def main() -> None:
     with open("featured.svg", "w", encoding="utf-8") as f:
         f.write(build_featured_svg())
+    with open("streak.svg", "w", encoding="utf-8") as f:
+        f.write(build_streak_svg())
     with open("footer.svg", "w", encoding="utf-8") as f:
         f.write(build_footer_svg())
 

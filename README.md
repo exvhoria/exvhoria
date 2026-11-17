@@ -43,7 +43,11 @@ Live repository telemetry synced automatically via GitHub Actions:
 ### Real-Time Activity
 
 <p align="left">
-  <img src="https://streak-stats.demolab.com/?user=exvhoria&background=09090b&border=27272a&stroke=27272a&ring=e4e4e7&fire=fafafa&currStreakNum=fafafa&sideNums=fafafa&currStreakLabel=a1a1aa&sideLabels=a1a1aa&dates=71717a&border_radius=14" alt="GitHub Streak" />
+  <img src="./streak.svg" alt="GitHub Contribution Telemetry (Auto-Synced)" width="100%" />
+</p>
+
+<p align="left">
+  <img src="https://streak-stats.demolab.com/?user=exvhoria&background=09090b&border=27272a&stroke=27272a&ring=e4e4e7&fire=fafafa&currStreakNum=fafafa&sideNums=fafafa&currStreakLabel=a1a1aa&sideLabels=a1a1aa&dates=71717a&border_radius=14" alt="GitHub Streak (demolab)" />
 </p>
 
 <p align="left">
