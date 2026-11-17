@@ -34,13 +34,13 @@
   <!-- Live Telemetry Pills -->
   <rect x="28" y="152" width="94" height="26" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
   <text x="75.0" y="169" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#d4d4d8">JavaScript</text>
-  <rect x="130" y="152" width="87" height="26" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
-  <text x="173.5" y="169" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#d4d4d8">★ 0 stars</text>
-  <rect x="225" y="152" width="87" height="26" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
-  <text x="268.5" y="169" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#d4d4d8">⑂ 0 forks</text>
-  <rect x="320" y="152" width="94" height="26" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
-  <text x="367.0" y="169" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#d4d4d8">• 0 issues</text>
+  <rect x="130" y="152" width="80" height="26" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+  <text x="170.0" y="169" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#d4d4d8">★ 1 star</text>
+  <rect x="218" y="152" width="87" height="26" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+  <text x="261.5" y="169" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#d4d4d8">⑂ 0 forks</text>
+  <rect x="313" y="152" width="94" height="26" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+  <text x="360.0" y="169" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#d4d4d8">• 0 issues</text>
 
   <!-- Synced Timestamp -->
-  <text x="732" y="169" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#52525b">synced 2026-11-17 04:15 UTC</text>
+  <text x="732" y="169" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#52525b">synced 2026-11-17 04:43 UTC</text>
 </svg>
