@@ -3,6 +3,7 @@
 
 import html
 import json
+import math
 import os
 import re
 import urllib.request
@@ -171,6 +172,8 @@ def compute_contribution_stats(start_year: int = 2024) -> dict:
         check_day -= timedelta(days=1)
 
     return {
+        "today": today.isoformat(),
+        "all_days": day_map,
         "total": total,
         "current": current,
         "current_range": fmt_range(current_start, current_end) if current > 0 else "No active streak",
@@ -366,6 +369,175 @@ def build_streak_svg(tname: str, th: dict, stats: dict) -> str:
 '''
 
 
+def _monotone_spline_path(pts: list[tuple[float, float]]) -> str:
+    """Build a Fritsch-Carlson monotone cubic Bezier SVG path with zero overshoot."""
+    n = len(pts)
+    if n < 2:
+        return f"M {pts[0][0]:.1f},{pts[0][1]:.1f}" if pts else ""
+
+    xs = [p[0] for p in pts]
+    ys = [p[1] for p in pts]
+    dxs = [xs[i + 1] - xs[i] for i in range(n - 1)]
+    secs = [(ys[i + 1] - ys[i]) / dxs[i] for i in range(n - 1)]
+
+    m = [0.0] * n
+    m[0] = secs[0]
+    m[-1] = secs[-1]
+    for i in range(1, n - 1):
+        if secs[i - 1] * secs[i] > 0:
+            m[i] = 0.5 * (secs[i - 1] + secs[i])
+
+    for i in range(n - 1):
+        if abs(secs[i]) < 1e-9:
+            m[i] = 0.0
+            m[i + 1] = 0.0
+        else:
+            a = m[i] / secs[i]
+            b = m[i + 1] / secs[i]
+            h = math.hypot(a, b)
+            if h > 3.0:
+                t = 3.0 / h
+                m[i] = t * a * secs[i]
+                m[i + 1] = t * b * secs[i]
+
+    cmds = [f"M {xs[0]:.1f},{ys[0]:.1f}"]
+    for i in range(n - 1):
+        c1x = xs[i] + dxs[i] / 3.0
+        c1y = ys[i] + m[i] * dxs[i] / 3.0
+        c2x = xs[i + 1] - dxs[i] / 3.0
+        c2y = ys[i + 1] - m[i + 1] * dxs[i] / 3.0
+        cmds.append(f"C {c1x:.1f},{c1y:.1f} {c2x:.1f},{c2y:.1f} {xs[i + 1]:.1f},{ys[i + 1]:.1f}")
+    return " ".join(cmds)
+
+
+def build_activity_svg(tname: str, th: dict, stats: dict) -> str:
+    today = date.fromisoformat(stats["today"])
+    day_map = stats["all_days"]
+    days = [today - timedelta(days=i) for i in range(29, -1, -1)]
+    vals = [day_map.get(d.isoformat(), 0) for d in days]
+
+    sum_30d = sum(vals)
+    peak_val = max(vals) if vals else 0
+    peak_idx = len(vals) - 1 - vals[::-1].index(peak_val) if peak_val > 0 else len(vals) - 1
+    peak_label = days[peak_idx].strftime("%b %d")
+
+    raw_step = max(1, math.ceil(peak_val / 4)) if peak_val > 0 else 1
+    for nice in (1, 2, 3, 4, 5, 8, 10, 12, 15, 20, 25, 30, 40, 50, 75, 100):
+        if nice >= raw_step:
+            step = nice
+            break
+    else:
+        step = ((raw_step + 9) // 10) * 10
+    y_max = step * 4
+
+    plot_left, plot_right = 54.0, 724.0
+    plot_top, plot_bottom = 58.0, 146.0
+    plot_w = plot_right - plot_left
+    plot_h = plot_bottom - plot_top
+
+    pts = [
+        (
+            plot_left + (i / (len(days) - 1)) * plot_w,
+            plot_bottom - (v / y_max) * plot_h,
+        )
+        for i, v in enumerate(vals)
+    ]
+    line_d = _monotone_spline_path(pts)
+    area_d = f"{line_d} L {pts[-1][0]:.1f},{plot_bottom:.1f} L {pts[0][0]:.1f},{plot_bottom:.1f} Z"
+
+    grid_lines = []
+    for i in range(5):
+        gy = plot_bottom - (i / 4.0) * plot_h
+        tick_val = i * step
+        if i == 0:
+            grid_lines.append(
+                f'  <line x1="{plot_left:.0f}" y1="{gy:.1f}" x2="{plot_right:.0f}" y2="{gy:.1f}" stroke="{th["border_strong"]}" stroke-width="1"/>'
+            )
+        else:
+            grid_lines.append(
+                f'  <line x1="{plot_left:.0f}" y1="{gy:.1f}" x2="{plot_right:.0f}" y2="{gy:.1f}" stroke="{th["border"]}" stroke-width="1" stroke-dasharray="3 4" opacity="0.75"/>'
+            )
+        grid_lines.append(
+            f'  <text x="{plot_left - 10:.0f}" y="{gy + 3.5:.1f}" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" fill="{th["muted"]}">{tick_val}</text>'
+        )
+
+    x_ticks = []
+    for idx in (0, 5, 10, 15, 20, 25, 29):
+        px = pts[idx][0]
+        lbl = days[idx].strftime("%b %d")
+        x_ticks.append(
+            f'  <line x1="{px:.1f}" y1="{plot_top:.0f}" x2="{px:.1f}" y2="{plot_bottom:.0f}" stroke="{th["border"]}" stroke-width="0.8" opacity="0.35"/>'
+        )
+        x_ticks.append(
+            f'  <text x="{px:.1f}" y="166" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" fill="{th["muted"]}">{html.escape(lbl)}</text>'
+        )
+
+    dots = []
+    for i, ((px, py), v) in enumerate(zip(pts, vals)):
+        if i == len(pts) - 1:
+            continue
+        if v == 0:
+            dots.append(
+                f'  <circle cx="{px:.1f}" cy="{py:.1f}" r="1.6" fill="{th["faint"]}" opacity="0.55"/>'
+            )
+        else:
+            dots.append(
+                f'  <circle cx="{px:.1f}" cy="{py:.1f}" r="2.8" fill="{th["hero"]}" stroke="{th["bg0"]}" stroke-width="1.2"/>'
+            )
+            if peak_val > 0 and i == peak_idx:
+                dots.append(
+                    f'  <circle cx="{px:.1f}" cy="{py:.1f}" r="5.5" fill="none" stroke="{th["label"]}" stroke-width="1" opacity="0.75"/>'
+                )
+
+    tx, ty = pts[-1]
+    area_op = "0.24" if tname == "dark" else "0.14"
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 186" width="760" height="186" role="img" aria-label="30-Day Contribution Activity">
+  <defs>
+    <linearGradient id="act_bg_{tname}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="{th['bg0']}"/>
+      <stop offset="100%" stop-color="{th['bg1']}"/>
+    </linearGradient>
+    <pattern id="act_dots_{tname}" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="{th['border']}" opacity="0.28"/>
+    </pattern>
+    <linearGradient id="act_area_{tname}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="{th['hero']}" stop-opacity="{area_op}"/>
+      <stop offset="100%" stop-color="{th['bg0']}" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="actGlow_{tname}" filterUnits="userSpaceOnUse" x="0" y="0" width="760" height="186">
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
+      <feFlood flood-color="{th['glow_flood']}" flood-opacity="{th['glow_op']}" result="col"/>
+      <feComposite in="col" in2="blur" operator="in" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="1" y="1" width="758" height="184" rx="14" fill="url(#act_bg_{tname})" stroke="{th['border']}" stroke-width="1"/>
+  <rect x="1" y="1" width="758" height="184" rx="14" fill="url(#act_dots_{tname})"/>
+
+  <text x="28" y="31" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" letter-spacing="2" fill="{th['muted']}">CONTRIBUTION ACTIVITY · 30D</text>
+  <text x="732" y="31" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="{th['sub']}">{sum_30d} total · peak {peak_val} ({html.escape(peak_label)})</text>
+
+{chr(10).join(grid_lines)}
+{chr(10).join(x_ticks)}
+
+  <path d="{area_d}" fill="url(#act_area_{tname})"/>
+  <path d="{line_d}" fill="none" stroke="{th['hero']}" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" filter="url(#actGlow_{tname})"/>
+
+{chr(10).join(dots)}
+  <circle cx="{tx:.1f}" cy="{ty:.1f}" r="4.5" fill="none" stroke="{th['hero']}" stroke-width="1.2" opacity="0.65">
+    <animate attributeName="r" values="3.5;9.5;3.5" dur="2.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.75;0.05;0.75" dur="2.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="{tx:.1f}" cy="{ty:.1f}" r="3.1" fill="{th['hero']}" stroke="{th['bg0']}" stroke-width="1.3"/>
+</svg>
+'''
+
+
 def build_footer_svg(tname: str, th: dict, p_sha: str) -> str:
     synced_pretty = datetime.now(timezone.utc).strftime("%b %d, %Y · %H:%M UTC")
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 106" width="760" height="106" role="img" aria-label="Profile Sync &amp; Last Update">
@@ -412,6 +584,8 @@ def main() -> None:
             f.write(build_featured_svg(tname, th, repo, commit))
         with open(f"assets/streak-{tname}.svg", "w", encoding="utf-8") as f:
             f.write(build_streak_svg(tname, th, stats))
+        with open(f"assets/activity-{tname}.svg", "w", encoding="utf-8") as f:
+            f.write(build_activity_svg(tname, th, stats))
         with open(f"assets/footer-{tname}.svg", "w", encoding="utf-8") as f:
             f.write(build_footer_svg(tname, th, p_sha))
 

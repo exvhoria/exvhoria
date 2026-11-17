@@ -66,9 +66,9 @@ Live repository telemetry synced automatically via GitHub Actions:
 
 <p align="left">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=exvhoria&amp;bg_color=09090b&amp;color=a1a1aa&amp;line=e4e4e7&amp;point=fafafa&amp;area=true&amp;area_color=27272a&amp;hide_border=false&amp;border_color=27272a&amp;radius=14&amp;custom_title=Contribution%20Activity" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=exvhoria&amp;bg_color=ffffff&amp;color=52525b&amp;line=18181b&amp;point=09090b&amp;area=true&amp;area_color=e4e4e7&amp;hide_border=false&amp;border_color=e4e4e7&amp;radius=14&amp;custom_title=Contribution%20Activity" />
-    <img alt="Contribution Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=exvhoria&amp;bg_color=09090b&amp;color=a1a1aa&amp;line=e4e4e7&amp;point=fafafa&amp;area=true&amp;area_color=27272a&amp;hide_border=false&amp;border_color=27272a&amp;radius=14&amp;custom_title=Contribution%20Activity" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/activity-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/activity-light.svg" />
+    <img alt="30-Day Contribution Activity" src="./assets/activity-dark.svg" width="100%" />
   </picture>
 </p>
 
