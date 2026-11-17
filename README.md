@@ -1,11 +1,33 @@
 <p align="left">
-  <img src="./banner.svg" alt="GhosttedXV — Software &amp; Systems Engineering" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/banner-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/banner-light.svg" />
+    <img alt="GhosttedXV — Software &amp; Systems Engineering" src="./assets/banner-dark.svg" width="100%" />
+  </picture>
 </p>
 
 <p align="center">
-  <a href="https://github.com/exvhoria"><img src="./social-github.svg" alt="GitHub" width="108" height="34" /></a>
-  <a href="https://youtube.com/@ghosttedwastaken"><img src="./social-youtube.svg" alt="YouTube" width="108" height="34" /></a>
-  <a href="https://instagram.com/ghosttedcodm"><img src="./social-instagram.svg" alt="Instagram" width="108" height="34" /></a>
+  <a href="https://github.com/exvhoria">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/social-github-dark.svg" />
+      <source media="(prefers-color-scheme: light)" srcset="./assets/social-github-light.svg" />
+      <img alt="GitHub" src="./assets/social-github-dark.svg" width="108" height="34" />
+    </picture>
+  </a>
+  <a href="https://youtube.com/@ghosttedwastaken">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/social-youtube-dark.svg" />
+      <source media="(prefers-color-scheme: light)" srcset="./assets/social-youtube-light.svg" />
+      <img alt="YouTube" src="./assets/social-youtube-dark.svg" width="108" height="34" />
+    </picture>
+  </a>
+  <a href="https://instagram.com/ghosttedcodm">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/social-instagram-dark.svg" />
+      <source media="(prefers-color-scheme: light)" srcset="./assets/social-instagram-light.svg" />
+      <img alt="Instagram" src="./assets/social-instagram-dark.svg" width="108" height="34" />
+    </picture>
+  </a>
 </p>
 
 ### About
@@ -13,7 +35,11 @@
 Independent software engineer based in Indonesia, currently focused on **ZyruMHD**, building backend infrastructure, self-hosted AI tooling, and full-stack web systems. I focus on resilient CLI workflows, reverse-proxy gateways, and pragmatic architectures designed to run reliably in constrained environments.
 
 <p align="left">
-  <img src="./focus.svg" alt="Engineering Focus" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/focus-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/focus-light.svg" />
+    <img alt="Engineering Focus" src="./assets/focus-dark.svg" width="100%" />
+  </picture>
 </p>
 
 ### Tech Stack
@@ -21,13 +47,21 @@ Independent software engineer based in Indonesia, currently focused on **ZyruMHD
 Core languages, runtimes, and infrastructure I build with daily:
 
 <p align="left">
-  <img src="./techstack.svg" alt="Tech Stack" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/techstack-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/techstack-light.svg" />
+    <img alt="Tech Stack" src="./assets/techstack-dark.svg" width="100%" />
+  </picture>
 </p>
 
 ### Current Initiative
 
 <p align="left">
-  <img src="./requiem.svg" alt="ZyruMHD: Requiem" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/requiem-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/requiem-light.svg" />
+    <img alt="ZyruMHD: Requiem" src="./assets/requiem-dark.svg" width="100%" />
+  </picture>
 </p>
 
 ### Featured Project
@@ -36,18 +70,30 @@ Live repository telemetry synced automatically via GitHub Actions:
 
 <p align="left">
   <a href="https://github.com/exvhoria/Asanagi-Code">
-    <img src="./featured.svg" alt="Featured Project — exvhoria/Asanagi-Code" width="100%" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-dark.svg" />
+      <source media="(prefers-color-scheme: light)" srcset="./assets/featured-light.svg" />
+      <img alt="Featured Project — exvhoria/Asanagi-Code" src="./assets/featured-dark.svg" width="100%" />
+    </picture>
   </a>
 </p>
 
 ### Real-Time Activity
 
 <p align="left">
-  <img src="./streak.svg" alt="GitHub Contribution Streak" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/streak-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/streak-light.svg" />
+    <img alt="GitHub Contribution Streak" src="./assets/streak-dark.svg" width="100%" />
+  </picture>
 </p>
 
 <p align="left">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=exvhoria&bg_color=09090b&color=a1a1aa&line=e4e4e7&point=fafafa&area=true&area_color=27272a&hide_border=false&border_color=27272a&radius=14&custom_title=Contribution%20Activity" alt="Contribution Activity Graph" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=exvhoria&amp;bg_color=09090b&amp;color=a1a1aa&amp;line=e4e4e7&amp;point=fafafa&amp;area=true&amp;area_color=27272a&amp;hide_border=false&amp;border_color=27272a&amp;radius=14&amp;custom_title=Contribution%20Activity" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=exvhoria&amp;bg_color=ffffff&amp;color=52525b&amp;line=18181b&amp;point=09090b&amp;area=true&amp;area_color=e4e4e7&amp;hide_border=false&amp;border_color=e4e4e7&amp;radius=14&amp;custom_title=Contribution%20Activity" />
+    <img alt="Contribution Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=exvhoria&amp;bg_color=09090b&amp;color=a1a1aa&amp;line=e4e4e7&amp;point=fafafa&amp;area=true&amp;area_color=27272a&amp;hide_border=false&amp;border_color=27272a&amp;radius=14&amp;custom_title=Contribution%20Activity" width="100%" />
+  </picture>
 </p>
 
 ### Reading Shelf
@@ -55,22 +101,42 @@ Live repository telemetry synced automatically via GitHub Actions:
 Novels I've finished and the ones I'm currently working through in my downtime:
 
 <p align="left">
-  <img src="./reading.png" alt="Reading Shelf — Tere Liye Novels" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/reading-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/reading-light.png" />
+    <img alt="Reading Shelf — Tere Liye Novels" src="./assets/reading-dark.png" width="100%" />
+  </picture>
 </p>
 
 ### Bored?
 
 <p align="left">
   <a href="https://reanimepatting.pages.dev/">
-    <img src="./minigame.svg" alt="Minigame — Alya Kujou Patting Simulator" width="100%" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/minigame-dark.svg" />
+      <source media="(prefers-color-scheme: light)" srcset="./assets/minigame-light.svg" />
+      <img alt="Minigame — Alya Kujou Patting Simulator" src="./assets/minigame-dark.svg" width="100%" />
+    </picture>
   </a>
 </p>
 
 <p align="left">
-  <img src="./footer.svg" alt="Profile Status &amp; Last Update" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/footer-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/footer-light.svg" />
+    <img alt="Profile Status &amp; Last Update" src="./assets/footer-dark.svg" width="100%" />
+  </picture>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/last-commit/exvhoria/exvhoria?style=for-the-badge&label=LAST%20UPDATE&color=27272a&labelColor=111114" alt="Last Update" />
-  <img src="https://hits.sh/github.com/exvhoria.svg?view=today-total&style=for-the-badge&label=VIEWS&color=27272a&labelColor=111114" alt="Profile Views" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/github/last-commit/exvhoria/exvhoria?style=for-the-badge&amp;label=LAST%20UPDATE&amp;color=27272a&amp;labelColor=111114" />
+    <source media="(prefers-color-scheme: light)" srcset="https://img.shields.io/github/last-commit/exvhoria/exvhoria?style=for-the-badge&amp;label=LAST%20UPDATE&amp;color=18181b&amp;labelColor=e4e4e7" />
+    <img alt="Last Update" src="https://img.shields.io/github/last-commit/exvhoria/exvhoria?style=for-the-badge&amp;label=LAST%20UPDATE&amp;color=27272a&amp;labelColor=111114" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://hits.sh/github.com/exvhoria.svg?view=today-total&amp;style=for-the-badge&amp;label=VIEWS&amp;color=27272a&amp;labelColor=111114" />
+    <source media="(prefers-color-scheme: light)" srcset="https://hits.sh/github.com/exvhoria.svg?view=today-total&amp;style=for-the-badge&amp;label=VIEWS&amp;color=18181b&amp;labelColor=e4e4e7" />
+    <img alt="Profile Views" src="https://hits.sh/github.com/exvhoria.svg?view=today-total&amp;style=for-the-badge&amp;label=VIEWS&amp;color=27272a&amp;labelColor=111114" />
+  </picture>
 </p>

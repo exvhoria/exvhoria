@@ -28,8 +28,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet featured.svg streak.svg footer.svg; then
-            git add featured.svg streak.svg footer.svg
+          if ! git diff --quiet assets/featured-dark.svg assets/featured-light.svg assets/streak-dark.svg assets/streak-light.svg assets/footer-dark.svg assets/footer-light.svg; then
+            git add assets/featured-dark.svg assets/featured-light.svg assets/streak-dark.svg assets/streak-light.svg assets/footer-dark.svg assets/footer-light.svg
             git commit -m "chore: sync live profile telemetry [skip ci]"
             git push
           fi
