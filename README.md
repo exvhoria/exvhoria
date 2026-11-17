@@ -55,7 +55,7 @@ Live repository telemetry synced automatically via GitHub Actions:
 Novels I've finished and the ones I'm currently working through in my downtime:
 
 <p align="left">
-  <img src="./reading.svg" alt="Reading Shelf — Tere Liye Novels" width="100%" />
+  <img src="./reading.png" alt="Reading Shelf — Tere Liye Novels" width="100%" />
 </p>
 
 ### Bored?
