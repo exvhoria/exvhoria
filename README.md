@@ -7,27 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/exvhoria">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/social-github-dark.svg" />
-      <source media="(prefers-color-scheme: light)" srcset="./assets/social-github-light.svg" />
-      <img alt="GitHub" src="./assets/social-github-dark.svg" width="108" height="34" />
-    </picture>
-  </a>
-  <a href="https://youtube.com/@ghosttedwastaken">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/social-youtube-dark.svg" />
-      <source media="(prefers-color-scheme: light)" srcset="./assets/social-youtube-light.svg" />
-      <img alt="YouTube" src="./assets/social-youtube-dark.svg" width="108" height="34" />
-    </picture>
-  </a>
-  <a href="https://instagram.com/ghosttedcodm">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/social-instagram-dark.svg" />
-      <source media="(prefers-color-scheme: light)" srcset="./assets/social-instagram-light.svg" />
-      <img alt="Instagram" src="./assets/social-instagram-dark.svg" width="108" height="34" />
-    </picture>
-  </a>
+  <a href="https://github.com/exvhoria"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/social-github-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/social-github-light.svg" /><img alt="GitHub" src="./assets/social-github-dark.svg" width="108" height="34" /></picture></a>
+  <a href="https://youtube.com/@ghosttedwastaken"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/social-youtube-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/social-youtube-light.svg" /><img alt="YouTube" src="./assets/social-youtube-dark.svg" width="108" height="34" /></picture></a>
+  <a href="https://instagram.com/ghosttedcodm"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/social-instagram-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/social-instagram-light.svg" /><img alt="Instagram" src="./assets/social-instagram-dark.svg" width="108" height="34" /></picture></a>
 </p>
 
 ### About
@@ -69,13 +51,7 @@ Core languages, runtimes, and infrastructure I build with daily:
 Live repository telemetry synced automatically via GitHub Actions:
 
 <p align="left">
-  <a href="https://github.com/exvhoria/Asanagi-Code">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/featured-dark.svg" />
-      <source media="(prefers-color-scheme: light)" srcset="./assets/featured-light.svg" />
-      <img alt="Featured Project — exvhoria/Asanagi-Code" src="./assets/featured-dark.svg" width="100%" />
-    </picture>
-  </a>
+  <a href="https://github.com/exvhoria/Asanagi-Code"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/featured-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/featured-light.svg" /><img alt="Featured Project — exvhoria/Asanagi-Code" src="./assets/featured-dark.svg" width="100%" /></picture></a>
 </p>
 
 ### Real-Time Activity
@@ -96,6 +72,14 @@ Live repository telemetry synced automatically via GitHub Actions:
   </picture>
 </p>
 
+<p align="left">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/shark-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./assets/shark-light.svg" />
+    <img alt="3D Animated Shark — Activity Patrol" src="./assets/shark-dark.svg" width="100%" />
+  </picture>
+</p>
+
 ### Reading Shelf
 
 Novels I've finished and the ones I'm currently working through in my downtime:
@@ -111,13 +95,7 @@ Novels I've finished and the ones I'm currently working through in my downtime:
 ### Bored?
 
 <p align="left">
-  <a href="https://reanimepatting.pages.dev/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/minigame-dark.svg" />
-      <source media="(prefers-color-scheme: light)" srcset="./assets/minigame-light.svg" />
-      <img alt="Minigame — Alya Kujou Patting Simulator" src="./assets/minigame-dark.svg" width="100%" />
-    </picture>
-  </a>
+  <a href="https://reanimepatting.pages.dev/"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/minigame-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/minigame-light.svg" /><img alt="Minigame — Alya Kujou Patting Simulator" src="./assets/minigame-dark.svg" width="100%" /></picture></a>
 </p>
 
 <p align="left">
