@@ -29,7 +29,7 @@
   <text x="28" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14.5" fill="#52525b">Self-hosted AI coding agent and proxy gateway supervisor for Termux/Android</text>
   <text x="28" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14.5" fill="#52525b">with automatic session re-minting, WARP egress rotation, and watchdog recovery.</text>
 
-  <text x="28" y="139" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#71717a">commit eed3a22 · &quot;feat(installer): bundle musl loader in repo...&quot; (Nov 16, 2026)</text>
+  <text x="28" y="139" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#71717a">commit 6f88f75 · &quot;lattice/docker: UDP pre-flight + fast fallb...&quot; (Nov 17, 2026)</text>
 
   <rect x="28" y="152" width="94" height="26" rx="6" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/>
   <text x="75.0" y="169" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#27272a">JavaScript</text>
@@ -40,5 +40,5 @@
   <rect x="313" y="152" width="94" height="26" rx="6" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/>
   <text x="360.0" y="169" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#27272a">• 0 issues</text>
 
-  <text x="732" y="169" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#a1a1aa">synced 2026-11-17 11:05 UTC</text>
+  <text x="732" y="169" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#a1a1aa">synced 2026-11-17 18:08 UTC</text>
 </svg>
