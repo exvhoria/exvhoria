@@ -50,6 +50,14 @@ Live repository telemetry synced automatically via GitHub Actions:
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=exvhoria&bg_color=09090b&color=a1a1aa&line=e4e4e7&point=fafafa&area=true&area_color=27272a&hide_border=false&border_color=27272a&radius=14&custom_title=Contribution%20Activity" alt="Contribution Activity Graph" width="100%" />
 </p>
 
+### Bored?
+
+<p align="left">
+  <a href="https://reanimepatting.pages.dev/">
+    <img src="./minigame.svg" alt="Minigame — Alya Kujou Patting Simulator" width="100%" />
+  </a>
+</p>
+
 <p align="left">
   <img src="./footer.svg" alt="Profile Status &amp; Last Update" width="100%" />
 </p>
